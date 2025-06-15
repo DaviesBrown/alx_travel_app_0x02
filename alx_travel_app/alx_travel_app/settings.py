@@ -31,8 +31,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qvq%&t8*gkgfwjj4)b8y@v&+#+xyjb6!7cm0r%qagd(!l7&f1s'
-
+SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
 DEBUG = env('DEBUG')
@@ -53,7 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'drf_yasg',
-    'alx_travel_app.listings',
+    'listings.apps.ListingsConfig',
 ]
 
 MIDDLEWARE = [

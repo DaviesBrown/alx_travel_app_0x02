@@ -1,8 +1,13 @@
 # views.py
-from rest_framework import generics
-from .models import Listing
-from .serializers import ListingSerializer
+from rest_framework import viewsets
+from .models import Listing, Booking
+from .serializers import ListingSerializer, BookingSerializer
 
-class ListingListCreateAPIView(generics.ListCreateAPIView):
+class ListingViewSet(viewsets.ModelViewSet):
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
+
+class BookingViewSet(viewsets.ModelViewSet):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+

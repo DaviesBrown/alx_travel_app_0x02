@@ -19,6 +19,9 @@ class User(AbstractUser):
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        app_label = 'listings'
+
     def __str__(self):
         return f"{self.username} ({self.email})"
 

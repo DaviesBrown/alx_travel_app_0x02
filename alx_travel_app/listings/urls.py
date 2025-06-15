@@ -1,7 +1,9 @@
 from django.urls import path
-from . import views
+from rest_framework.routers import DefaultRouter
+from .views import ListingViewSet, BookingViewSet
 
-urlpatterns = [
-    # Example endpoint
-    path('', views.ListingListCreateAPIView.as_view(), name='listing-list-create'),
-]
+router = DefaultRouter()
+router.register(r'listings', ListingViewSet, basename='listing')
+router.register(r'bookings', BookingViewSet, basename='booking')
+
+urlpatterns = router.urls
