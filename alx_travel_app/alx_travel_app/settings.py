@@ -39,7 +39,7 @@ DEBUG = env('DEBUG')
 PAYSTACK_SECRET_KEY = env('PAYSTACK_SECRET_KEY')
 PAYSTACK_BASE_URL   = env('PAYSTACK_BASE_URL')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 # Application definition

@@ -12,8 +12,6 @@ class BookingSerializer(serializers.ModelSerializer):
         model = Booking
         fields = '__all__'
 
-from rest_framework import serializers
-
 class InitPaymentSerializer(serializers.Serializer):
     booking_id   = serializers.IntegerField()
     email        = serializers.EmailField()
