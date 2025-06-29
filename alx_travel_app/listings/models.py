@@ -2,6 +2,24 @@ from django.db import models
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+
+class Payment(models.Model):
+    booking      = models.OneToOneField('Booking', on_delete=models.CASCADE)
+    reference    = models.CharField(max_length=100, unique=True)
+    amount       = models.PositiveIntegerField(help_text='Amount in kobo')
+    status       = models.CharField(
+        max_length=20,
+        choices=[('pending','Pending'),('success','Success'),('failed','Failed')],
+        default='pending'
+    )
+    transaction  = models.CharField(max_length=100, blank=True, null=True)
+    created_at   = models.DateTimeField(auto_now_add=True)
+    updated_at   = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.booking} — {self.reference} ({self.status})'
+
 
 class User(AbstractUser):
     """User Model"""
